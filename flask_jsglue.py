@@ -1,7 +1,11 @@
 from flask import render_template
 from flask import make_response
 from flask import url_for
-from jinja2 import Markup
+try:
+    from markupsafe import Markup
+except ModuleNotFoundError:
+    # Support Jinja2 < 3.1, eg for Flask 2.1
+    from jinja2 import Markup
 import re
 import json
 
